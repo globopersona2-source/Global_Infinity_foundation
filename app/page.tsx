@@ -478,7 +478,7 @@ export default function Home() {
                   className="absolute top-0 right-0 w-96 h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 z-10"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/assets/images/Home1.jpeg"
                     alt="Music education"
                     fill
                     className="object-cover"
@@ -492,7 +492,7 @@ export default function Home() {
                   className="absolute bottom-0 left-0 w-80 h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 z-20"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1558537348-c0f8e733989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/assets/images/Home2.jpeg"
                     alt="Craftsmanship"
                     fill
                     className="object-cover"
@@ -506,7 +506,7 @@ export default function Home() {
                   className="absolute top-32 left-20 w-64 h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 z-30"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/assets/images/Home3.jpeg"
                     alt="Cultural events"
                     fill
                     className="object-cover"
@@ -614,7 +614,7 @@ export default function Home() {
                 icon: Music,
                 title: 'Music Education',
                 description: 'Providing accessible music learning opportunities, training programs, and workshops to nurture young talent and promote cultural heritage.',
-                image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: '/assets/images/FocusAreas1.jpeg',
                 color: 'from-amber-500 to-yellow-500',
                 stats: '500+ Students'
               },
@@ -622,7 +622,7 @@ export default function Home() {
                 icon: Guitar,
                 title: 'Instrument Production & Sales',
                 description: 'Supporting the production and distribution of quality musical instruments while promoting traditional craftsmanship and sustaining artisan communities.',
-                image: 'https://images.unsplash.com/photo-1558537348-c0f8e733989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: '/assets/images/FocusAreas2.jpeg',
                 color: 'from-amber-600 to-yellow-600',
                 stats: '30+ Artisans'
               },
@@ -630,7 +630,7 @@ export default function Home() {
                 icon: CalendarHeart,
                 title: 'Events & Fundraising',
                 description: 'Organizing concerts, cultural festivals, and fundraising events that celebrate music while generating resources to support the foundation\'s initiatives.',
-                image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: '/assets/images/FocusAreas3.jpeg',
                 color: 'from-amber-500 to-yellow-500',
                 stats: '50+ Events'
               }
@@ -757,82 +757,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* World-Class Musicians Section */}
-      <section className="container mx-auto px-4 py-20 overflow-hidden bg-white">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeUp}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-amber-700 to-amber-500 bg-clip-text text-transparent">
-              Learn from world-class musicians
-            </span>
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            They're Grammy winners, touring professionals, and master musicians who are passionate about sharing their craft.
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-yellow-500 mx-auto mt-6 rounded-full"></div>
-        </motion.div>
-
-        {/* Controls */}
-        <div className="flex justify-between items-center mb-6">
-          <div className="text-sm text-gray-500 bg-white/80 backdrop-blur px-4 py-2 rounded-full shadow-sm">
-            {isHovering ? '⏸️ Paused' : isAutoScrolling ? '✨ Auto-scrolling' : '⏸️ Manual mode'}
-          </div>
-          <div className="flex gap-2">
-            <button
-              onClick={scrollLeft}
-              className="p-3 rounded-full bg-white border-2 border-amber-200 hover:border-amber-500 text-amber-600 hover:text-amber-700 transition-all shadow-lg hover:shadow-xl"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={scrollRight}
-              className="p-3 rounded-full bg-white border-2 border-amber-200 hover:border-amber-500 text-amber-600 hover:text-amber-700 transition-all shadow-lg hover:shadow-xl"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-
-        {/* Scrollable Cards Container */}
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide pb-8"
-          style={{ 
-            scrollbarWidth: 'none', 
-            msOverflowStyle: 'none',
-            WebkitOverflowScrolling: 'touch'
-          }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {infiniteMusicians.map((musician, index) => (
-            <MusicianCard key={`${musician.name}-${index}`} musician={musician} index={index} />
-          ))}
-        </div>
-
-        {/* View All Link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mt-8"
-        >
-          <Link 
-            href="#" 
-            className="inline-flex items-center gap-2 text-lg font-semibold bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent hover:from-amber-700 hover:to-yellow-600 transition-all group"
-          >
-            View all musicians <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-          </Link>
-        </motion.div>
-      </section>
 
       {/* Impact Numbers */}
       <section className="py-20 bg-gradient-to-r from-amber-600 to-yellow-600">
