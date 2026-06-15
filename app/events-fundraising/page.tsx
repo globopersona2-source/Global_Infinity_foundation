@@ -21,7 +21,7 @@ const activities = [
     color: 'from-amber-500 to-yellow-500',
     bgColor: 'bg-amber-50',
     iconColor: 'text-amber-600',
-    image: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/classical-culture.jpeg',
     date: 'Monthly',
     attendees: '500+'
   },
@@ -32,7 +32,7 @@ const activities = [
     color: 'from-purple-500 to-pink-500',
     bgColor: 'bg-purple-50',
     iconColor: 'text-purple-600',
-    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/cultural-festival.jpeg',
     date: 'Annual',
     attendees: '2000+'
   },
@@ -43,7 +43,7 @@ const activities = [
     color: 'from-rose-500 to-red-500',
     bgColor: 'bg-rose-50',
     iconColor: 'text-rose-600',
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/fundraising-performances.jpeg',
     date: 'Quarterly',
     attendees: '300+'
   },
@@ -54,7 +54,7 @@ const activities = [
     color: 'from-emerald-500 to-teal-500',
     bgColor: 'bg-emerald-50',
     iconColor: 'text-emerald-600',
-    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/Community-engagement.jpeg',
     date: 'Weekly',
     attendees: '100+'
   },

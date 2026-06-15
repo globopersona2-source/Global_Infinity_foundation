@@ -287,7 +287,7 @@ export default function MusicEducationPage() {
                 className="absolute top-0 right-0 w-80 h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/music-education.jpeg"
                   alt="Music teacher"
                   fill
                   className="object-cover"
@@ -301,7 +301,7 @@ export default function MusicEducationPage() {
                 className="absolute bottom-0 left-0 w-72 h-72 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-20"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/music-education1.jpeg"
                   alt="Music student"
                   fill
                   className="object-cover"
@@ -315,7 +315,7 @@ export default function MusicEducationPage() {
                 className="absolute top-32 left-20 w-56 h-56 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-30"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/music-education2.jpeg"
                   alt="Performance"
                   fill
                   className="object-cover"

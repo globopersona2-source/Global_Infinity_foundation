@@ -130,8 +130,8 @@ export default function AboutPage() {
                   className="absolute top-0 right-0 w-64 h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-10"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Music foundation"
+                     src="/Tabala.jpeg"               
+                        alt="Music foundation"
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
@@ -142,8 +142,8 @@ export default function AboutPage() {
                   className="absolute bottom-0 left-0 w-72 h-72 rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-20"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Music education"
+                    src="/tabala1.jpeg"               
+                      alt="Music education"
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
@@ -154,8 +154,8 @@ export default function AboutPage() {
                   className="absolute top-32 left-20 w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-30"
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Musician"
+                      src="/tabala2.jpeg"       
+                            alt="Musician"
                     className="w-full h-full object-cover"
                   />
                 </motion.div>

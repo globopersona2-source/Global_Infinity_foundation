@@ -121,7 +121,7 @@ export default function InstrumentProductionPage() {
       <section className="relative h-[80vh] overflow-hidden">
         {/* Background Image */}
         <Image
-          src="https://images.unsplash.com/photo-1558537348-c0f8e733989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          src="/instrument.jpeg"
           alt="Instrument craftsmanship"
           fill
           className="object-cover"
@@ -236,7 +236,7 @@ export default function InstrumentProductionPage() {
                   className="absolute top-0 left-0 w-80 h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/instrument1.jpeg"
                     alt="Instrument making"
                     fill
                     className="object-cover"
@@ -249,7 +249,7 @@ export default function InstrumentProductionPage() {
                   className="absolute bottom-0 right-0 w-64 h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-20"
                 >
                   <Image
-                    src="https://images.unsplash.com/photo-1558537348-c0f8e733989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/instrument.jpeg"
                     alt="Guitar craftsmanship"
                     fill
                     className="object-cover"

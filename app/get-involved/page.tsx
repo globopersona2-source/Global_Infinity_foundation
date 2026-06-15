@@ -16,7 +16,7 @@ const ways = [
     color: 'from-rose-500 to-pink-500',
     bgColor: 'bg-rose-50',
     iconColor: 'text-rose-600',
-    image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/donation.jpeg',
     stats: '500+ Donors'
   },
   { 
@@ -26,7 +26,7 @@ const ways = [
     color: 'from-amber-500 to-yellow-500',
     bgColor: 'bg-amber-50',
     iconColor: 'text-amber-600',
-    image: 'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/sponser.jpeg',
     stats: '25+ Programs'
   },
   { 
@@ -36,7 +36,7 @@ const ways = [
     color: 'from-emerald-500 to-teal-500',
     bgColor: 'bg-emerald-50',
     iconColor: 'text-emerald-600',
-    image: 'https://images.unsplash.com/photo-1558537348-c0f8e733989d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/Support-instrument-production.jpeg',
     stats: '100+ Instruments'
   },
   { 
@@ -46,7 +46,7 @@ const ways = [
     color: 'from-purple-500 to-indigo-500',
     bgColor: 'bg-purple-50',
     iconColor: 'text-purple-600',
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/volunteer.jpeg',
     stats: '200+ Volunteers'
   },
 ]
