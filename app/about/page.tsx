@@ -235,6 +235,34 @@ export default function AboutPage() {
                 <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-amber-500 to-yellow-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
               </motion.div>
             </motion.div>
+
+            {/* Right Column - Vertical Timeline */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              variants={staggerContainer}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {[
+                { year: '2010', title: 'Founded', desc: 'Started with a vision' },
+                { year: '2015', title: 'Expanded', desc: 'Reached 100+ students' },
+                { year: '2020', title: 'Global', desc: 'International recognition' },
+                { year: '2024', title: 'Today', desc: '500+ students trained' },
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={slideInRight}
+                  whileHover={{ scale: 1.05 }}
+                  className="relative pl-8 border-l-4 border-amber-200 hover:border-amber-500 transition-colors group"
+                >
+                  <div className="absolute -left-3 top-0 w-6 h-6 bg-white border-2 border-amber-500 rounded-full group-hover:bg-amber-500 transition-colors"></div>
+                  <span className="text-sm font-bold text-amber-600">{item.year}</span>
+                  <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                  <p className="text-sm text-gray-500">{item.desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
 
           {/* Vision & Mission - Split Screen Layout */}

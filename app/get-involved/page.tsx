@@ -8,6 +8,55 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Heart, Handshake, Users, Megaphone, Sparkles, ArrowRight, Gift, Calendar, Globe, Coffee, Star, Award } from 'lucide-react'
 
+const ways = [
+  { 
+    icon: Heart, 
+    title: 'Make a donation',
+    description: 'Your financial support helps us provide music education to underserved communities.',
+    color: 'from-rose-500 to-pink-500',
+    bgColor: 'bg-rose-50',
+    iconColor: 'text-rose-600',
+    image: '/donation.jpeg',
+    stats: '500+ Donors'
+  },
+  { 
+    icon: Handshake, 
+    title: 'Sponsor music education programs',
+    description: 'Partner with us to sponsor workshops, masterclasses, and training programs.',
+    color: 'from-amber-500 to-yellow-500',
+    bgColor: 'bg-amber-50',
+    iconColor: 'text-amber-600',
+    image: '/sponser.jpeg',
+    stats: '25+ Programs'
+  },
+  { 
+    icon: Users, 
+    title: 'Support instrument production initiatives',
+    description: 'Help us provide quality instruments to students and preserve traditional craftsmanship.',
+    color: 'from-emerald-500 to-teal-500',
+    bgColor: 'bg-emerald-50',
+    iconColor: 'text-emerald-600',
+    image: '/Support-instrument-production.jpeg',
+    stats: '100+ Instruments'
+  },
+  { 
+    icon: Megaphone, 
+    title: 'Volunteer in events and activities',
+    description: 'Join our team of volunteers and help organize concerts, festivals, and cultural events.',
+    color: 'from-purple-500 to-indigo-500',
+    bgColor: 'bg-purple-50',
+    iconColor: 'text-purple-600',
+    image: '/volunteer.jpeg',
+    stats: '200+ Volunteers'
+  },
+]
+
+const impactStats = [
+  { icon: Heart, value: '500+', label: 'Donors', color: 'rose' },
+  { icon: Users, value: '1000+', label: 'Students Impacted', color: 'amber' },
+  { icon: Globe, value: '15+', label: 'Countries', color: 'emerald' },
+  { icon: Award, value: '50+', label: 'Events', color: 'purple' },
+]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -253,7 +302,30 @@ export default function GetInvolvedPage() {
         </motion.div>
       </section>
 
-
+      {/* Impact Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {impactStats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: idx * 0.1, type: "spring" }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.1 }}
+                className="text-center"
+              >
+                <div className={`w-16 h-16 bg-${stat.color}-100 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg`}>
+                  <stat.icon className={`w-8 h-8 text-${stat.color}-600`} />
+                </div>
+                <div className={`text-3xl font-bold text-${stat.color}-600`}>{stat.value}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Ways to Get Involved - Creative Card Grid */}
       <section className="py-24">
@@ -271,6 +343,157 @@ export default function GetInvolvedPage() {
             </p>
           </motion.div>
 
+          {/* Alternating Layout Cards */}
+          <div className="space-y-16 max-w-5xl mx-auto">
+            {ways.map((way, idx) => (
+              <motion.div
+                key={idx}
+                initial="hidden"
+                whileInView="visible"
+                variants={idx % 2 === 0 ? slideInLeft : slideInRight}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}
+              >
+                {/* Image Side */}
+                <div className="lg:w-1/2">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="relative h-80 rounded-3xl overflow-hidden shadow-2xl"
+                  >
+                    <Image
+                      src={way.image}
+                      alt={way.title}
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-110"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${way.color} opacity-60`}></div>
+                    
+                    {/* Floating Icon */}
+                    <motion.div
+                      animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                      className="absolute bottom-6 right-6"
+                    >
+                      <div className={`w-16 h-16 bg-gradient-to-br ${way.color} rounded-2xl flex items-center justify-center shadow-xl`}>
+                        <way.icon className="w-8 h-8 text-white" />
+                      </div>
+                    </motion.div>
+
+                    {/* Stats Badge */}
+                    <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-gray-800 shadow-lg">
+                      {way.stats}
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Content Side */}
+                <div className="lg:w-1/2">
+                  <ParallaxCard>
+                    <div className={`${way.bgColor} p-8 rounded-3xl shadow-xl border border-${way.color.split('-')[1]}-200`}>
+                      <h3 className={`text-2xl font-bold text-gray-900 mb-3`}>{way.title}</h3>
+                      <p className="text-gray-600 mb-6 leading-relaxed">{way.description}</p>
+                      
+                      {/* Action Button */}
+                      <motion.div
+                        whileHover={{ x: 5 }}
+                        className="inline-flex items-center gap-2 cursor-pointer group"
+                      >
+                        <span className={`font-semibold text-${way.color.split('-')[1]}-600`}>
+                          Learn More
+                        </span>
+                        <ArrowRight className={`w-4 h-4 text-${way.color.split('-')[1]}-600 group-hover:translate-x-1 transition-transform`} />
+                      </motion.div>
+
+                      {/* Progress Indicator */}
+                      <div className="mt-6 h-1 bg-white rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${70 + idx * 5}%` }}
+                          transition={{ delay: idx * 0.2, duration: 1 }}
+                          className={`h-full bg-gradient-to-r ${way.color}`}
+                        />
+                      </div>
+                    </div>
+                  </ParallaxCard>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials/Stories Section */}
+      <section className="py-24 bg-gradient-to-b from-amber-100/30 to-transparent">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Impact Stories</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Hear from people whose lives have been transformed by your support
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                name: 'Sarah Johnson',
+                role: 'Music Student',
+                quote: 'Thanks to the scholarship program, I could afford music lessons and now I\'m pursuing my dream.',
+                image: 'https://images.unsplash.com/photo-1494790108777-7669c4cd07f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                color: 'rose'
+              },
+              {
+                name: 'Michael Chen',
+                role: 'Volunteer',
+                quote: 'Volunteering at their events has been the most rewarding experience of my life.',
+                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                color: 'amber'
+              },
+              {
+                name: 'Maria Garcia',
+                role: 'Instrument Maker',
+                quote: 'Their support helped me continue my family\'s tradition of instrument crafting.',
+                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                color: 'emerald'
+              }
+            ].map((story, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.15 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+              >
+                <TiltCard>
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all">
+                    <div className="relative h-48">
+                      <Image
+                        src={story.image}
+                        alt={story.name}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t from-${story.color}-900/70 to-transparent`}></div>
+                    </div>
+                    <div className="p-6">
+                      <p className="text-gray-600 mb-4 italic">"{story.quote}"</p>
+                      <div>
+                        <h4 className="font-bold text-gray-900">{story.name}</h4>
+                        <p className={`text-sm text-${story.color}-600`}>{story.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </TiltCard>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
