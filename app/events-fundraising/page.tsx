@@ -351,93 +351,7 @@ export default function EventsFundraisingPage() {
         </motion.div>
       </section>
 
-      {/* Upcoming Events - Ticket Style Cards */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Join us at our upcoming concerts, festivals, and community gatherings
-            </p>
-          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {upcomingEvents.map((event, idx) => (
-              <motion.div
-                key={idx}
-                initial="hidden"
-                whileInView="visible"
-                variants={slideInUp}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-              >
-                <TiltCard>
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all group">
-                    {/* Image with Overlay */}
-                    <div className="relative h-40">
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
-                      
-                      {/* Category Badge */}
-                      <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-purple-600">
-                        {event.category}
-                      </div>
-
-                      {/* Price Tag */}
-                      <div className="absolute bottom-3 left-3 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        {event.price}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-4">
-                      <h3 className="font-bold text-gray-900 mb-2 text-sm">{event.title}</h3>
-                      
-                      <div className="space-y-1 mb-3">
-                        <div className="flex items-center gap-2 text-xs text-gray-600">
-                          <Calendar className="w-3 h-3 text-amber-500" />
-                          <span>{event.date}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs text-gray-600">
-                          <Clock className="w-3 h-3 text-amber-500" />
-                          <span>{event.time}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs text-gray-600">
-                          <MapPin className="w-3 h-3 text-amber-500" />
-                          <span>{event.location}</span>
-                        </div>
-                      </div>
-
-                      {/* Action Buttons */}
-                      <div className="flex gap-2">
-                        <Button size="sm" className="bg-amber-500 hover:bg-amber-600 text-white text-xs py-1 px-3 rounded-full flex-1">
-                          <Ticket className="w-3 h-3 mr-1" />
-                          Get Ticket
-                        </Button>
-                        <Button size="sm" variant="outline" className="border-amber-500 text-amber-600 hover:bg-amber-50 text-xs py-1 px-3 rounded-full">
-                          <Share2 className="w-3 h-3" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Activities Section - Stage Design */}
       <section className="py-24 bg-gradient-to-b from-purple-100/30 via-rose-100/30 to-amber-100/30">
@@ -626,38 +540,6 @@ export default function EventsFundraisingPage() {
               </Button>
             </motion.div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Past Event Highlights */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Past Event Highlights</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[1, 2, 3].map((_, idx) => (
-              <motion.div
-                key={idx}
-                initial="hidden"
-                whileInView="visible"
-                variants={slideInUp}
-                transition={{ delay: idx * 0.15 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-5xl font-bold text-amber-600 mb-2">150+</div>
-                <p className="text-gray-600">Attendees at {idx === 0 ? 'Spring Concert' : idx === 1 ? 'Summer Festival' : 'Fall Gala'}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 

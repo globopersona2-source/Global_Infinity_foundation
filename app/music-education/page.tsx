@@ -249,31 +249,7 @@ export default function MusicEducationPage() {
                 </p>
               </motion.div>
 
-              {/* Stats (from remote) */}
-              <motion.div
-                variants={fadeUp}
-                className="flex flex-wrap gap-6"
-              >
-                {[
-                  { icon: Users, value: '500+', label: 'Students' },
-                  { icon: GraduationCap, value: '50+', label: 'Graduates' },
-                  { icon: Star, value: '15+', label: 'Years' },
-                ].map((stat, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="flex items-center gap-3 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-xl shadow-lg border border-amber-200"
-                  >
-                    <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-lg flex items-center justify-center">
-                      <stat.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-xl font-bold text-gray-900">{stat.value}</div>
-                      <div className="text-xs text-gray-500">{stat.label}</div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
+
             </motion.div>
 
             {/* Right Content - Image Collage (local images preserved) */}
@@ -478,51 +454,7 @@ export default function MusicEducationPage() {
         </div>
       </section>
 
-      {/* Gallery Section (from remote) */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-amber-700 to-amber-500 bg-clip-text text-transparent">
-                Musical Moments
-              </span>
-            </h2>
-          </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {[1, 2, 3, 4].map((_, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="relative aspect-square rounded-2xl overflow-hidden shadow-xl"
-              >
-                <Image
-                  src={`https://images.unsplash.com/photo-${
-                    idx === 0 ? '1511379938547-c1f69419868d' :
-                    idx === 1 ? '1525201548942-d8732f6617a0' :
-                    idx === 2 ? '1513885535751-8b9238bd345a' :
-                    '1501281668745-f7f57925c3b4'
-                  }?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
-                  alt={`Gallery ${idx + 1}`}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-amber-900/50 to-transparent opacity-0 hover:opacity-100 transition-opacity"></div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section - Gold with Image */}
       <section className="py-24">

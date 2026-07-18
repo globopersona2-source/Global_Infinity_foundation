@@ -51,12 +51,7 @@ const ways = [
   },
 ]
 
-const impactStats = [
-  { icon: Heart, value: '500+', label: 'Donors', color: 'rose' },
-  { icon: Users, value: '1000+', label: 'Students Impacted', color: 'amber' },
-  { icon: Globe, value: '15+', label: 'Countries', color: 'emerald' },
-  { icon: Award, value: '50+', label: 'Events', color: 'purple' },
-]
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -302,30 +297,6 @@ export default function GetInvolvedPage() {
         </motion.div>
       </section>
 
-      {/* Impact Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {impactStats.map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.1, type: "spring" }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.1 }}
-                className="text-center"
-              >
-                <div className={`w-16 h-16 bg-${stat.color}-100 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg`}>
-                  <stat.icon className={`w-8 h-8 text-${stat.color}-600`} />
-                </div>
-                <div className={`text-3xl font-bold text-${stat.color}-600`}>{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Ways to Get Involved - Creative Card Grid */}
       <section className="py-24">
@@ -423,79 +394,7 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
-      {/* Testimonials/Stories Section */}
-      <section className="py-24 bg-gradient-to-b from-amber-100/30 to-transparent">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Impact Stories</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Hear from people whose lives have been transformed by your support
-            </p>
-          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                name: 'Sarah Johnson',
-                role: 'Music Student',
-                quote: 'Thanks to the scholarship program, I could afford music lessons and now I\'m pursuing my dream.',
-                image: 'https://images.unsplash.com/photo-1494790108777-7669c4cd07f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                color: 'rose'
-              },
-              {
-                name: 'Michael Chen',
-                role: 'Volunteer',
-                quote: 'Volunteering at their events has been the most rewarding experience of my life.',
-                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                color: 'amber'
-              },
-              {
-                name: 'Maria Garcia',
-                role: 'Instrument Maker',
-                quote: 'Their support helped me continue my family\'s tradition of instrument crafting.',
-                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                color: 'emerald'
-              }
-            ].map((story, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-              >
-                <TiltCard>
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all">
-                    <div className="relative h-48">
-                      <Image
-                        src={story.image}
-                        alt={story.name}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className={`absolute inset-0 bg-gradient-to-t from-${story.color}-900/70 to-transparent`}></div>
-                    </div>
-                    <div className="p-6">
-                      <p className="text-gray-600 mb-4 italic">"{story.quote}"</p>
-                      <div>
-                        <h4 className="font-bold text-gray-900">{story.name}</h4>
-                        <p className={`text-sm text-${story.color}-600`}>{story.role}</p>
-                      </div>
-                    </div>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action - Gradient Cards */}
       <section className="py-24">
