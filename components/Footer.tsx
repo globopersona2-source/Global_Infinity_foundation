@@ -20,8 +20,8 @@ const footerLinks = {
   ],
   contact: [
     { icon: Mail, text: 'info@globalinfinity.org' },
-    { icon: Phone, text: '+91 12345 67890' },
-    { icon: MapPin, text: 'India' },
+    { icon: Phone, text: '+91 944863668' },
+    { icon: MapPin, text: 'Bangalore , India' },
   ]
 }
 
@@ -67,7 +67,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2 text-amber-400">
               <Music className="w-4 h-4" />
-              <span className="text-sm">Since 2010</span>
+              <span className="text-sm">Since 2020</span>
             </div>
           </motion.div>
 

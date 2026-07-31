@@ -354,94 +354,94 @@ export default function EventsFundraisingPage() {
 
 
       {/* Activities Section - Stage Design */}
-      <section className="py-24 bg-gradient-to-b from-purple-100/30 via-rose-100/30 to-amber-100/30">
-        <div className="container mx-auto px-4">
+<section className="py-24 bg-gradient-to-b from-purple-100/30 via-rose-100/30 to-amber-100/30">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeUp}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Activities</h2>
+      <p className="text-gray-600 max-w-2xl mx-auto">
+        Discover the variety of events we organize throughout the year
+      </p>
+    </motion.div>
+
+    {/* Stage-like Platform */}
+    <div className="relative max-w-6xl mx-auto">
+      {/* Stage Base */}
+      <div className="absolute -bottom-4 left-0 right-0 h-8 bg-gradient-to-r from-amber-700 to-purple-700 rounded-b-2xl"></div>
+      
+      {/* Stage Lights */}
+      <div className="absolute -top-6 left-0 right-0 flex justify-around">
+        {[1, 2, 3, 4].map((_, i) => (
           <motion.div
+            key={i}
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
+            className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-400 to-rose-400 shadow-xl"
+          />
+        ))}
+      </div>
+
+      {/* Cards on Stage */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+        {activities.map((activity, idx) => (
+          <motion.div
+            key={idx}
             initial="hidden"
             whileInView="visible"
-            variants={fadeUp}
+            variants={scaleUp}
+            transition={{ delay: idx * 0.15 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            whileHover={{ y: -10, scale: 1.02 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Activities</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover the variety of events we organize throughout the year
-            </p>
-          </motion.div>
-
-          {/* Stage-like Platform */}
-          <div className="relative max-w-6xl mx-auto">
-            {/* Stage Base */}
-            <div className="absolute -bottom-4 left-0 right-0 h-8 bg-gradient-to-r from-amber-700 to-purple-700 rounded-b-2xl"></div>
-            
-            {/* Stage Lights */}
-            <div className="absolute -top-6 left-0 right-0 flex justify-around">
-              {[1, 2, 3, 4].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
-                  className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-400 to-rose-400 shadow-xl"
+            <div className={`${activity.bgColor} rounded-3xl overflow-hidden shadow-2xl border-2 border-white h-full group`}>
+              {/* Image Section */}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={activity.image}
+                  alt={activity.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              ))}
-            </div>
+                {/* Removed the gradient overlay div */}
 
-            {/* Cards on Stage */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-              {activities.map((activity, idx) => (
-                <motion.div
-                  key={idx}
-                  initial="hidden"
-                  whileInView="visible"
-                  variants={scaleUp}
-                  transition={{ delay: idx * 0.15 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                >
-                  <div className={`${activity.bgColor} rounded-3xl overflow-hidden shadow-2xl border-2 border-white h-full group`}>
-                    {/* Image Section */}
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={activity.image}
-                        alt={activity.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${activity.color} opacity-60`}></div>
-                      
-                      {/* Icon Overlay */}
-                      <div className="absolute bottom-4 left-4">
-                        <div className={`w-12 h-12 bg-gradient-to-br ${activity.color} rounded-xl flex items-center justify-center shadow-xl`}>
-                          <activity.icon className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className={`text-lg font-bold text-gray-900 mb-2 group-hover:text-${activity.color.split('-')[1]}-600 transition-colors`}>
-                        {activity.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                        {activity.description}
-                      </p>
-                      
-                      {/* Learn More Link */}
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        className={`inline-flex items-center gap-1 text-${activity.color.split('-')[1]}-600 font-medium text-sm cursor-pointer`}
-                      >
-                        <span>Learn More</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </motion.div>
-                    </div>
+                {/* Icon Overlay */}
+                <div className="absolute bottom-4 left-4">
+                  <div className={`w-12 h-12 bg-gradient-to-br ${activity.color} rounded-xl flex items-center justify-center shadow-xl`}>
+                    <activity.icon className="w-6 h-6 text-white" />
                   </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className={`text-lg font-bold text-gray-900 mb-2 group-hover:text-${activity.color.split('-')[1]}-600 transition-colors`}>
+                  {activity.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                  {activity.description}
+                </p>
+                
+                {/* Learn More Link */}
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  className={`inline-flex items-center gap-1 text-${activity.color.split('-')[1]}-600 font-medium text-sm cursor-pointer`}
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-3 h-3" />
                 </motion.div>
-              ))}
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Photo Gallery - Custom Grid: 4 images in first row, 2 centered below */}
       <section className="py-24">
@@ -509,9 +509,9 @@ export default function EventsFundraisingPage() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center text-white"
           >
-            <h3 className="text-3xl font-bold mb-4">2024 Fundraising Goal</h3>
+            <h3 className="text-3xl font-bold mb-4">2026 Fundraising Goal</h3>
             <p className="text-white/90 mb-8">
-              Help us reach our goal of $100,000 for music education programs
+              Help us reach our goal of $10000 for music education programs
             </p>
 
             {/* Progress Bar */}
@@ -558,9 +558,13 @@ export default function EventsFundraisingPage() {
               Interested in collaborating on a concert or fundraising event? Let's create something beautiful together.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-6 rounded-full shadow-xl">
-                Contact Us
-              </Button>
+<Button 
+  size="lg" 
+  className="bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-6 rounded-full shadow-xl"
+  onClick={() => window.location.href = '/contact'}
+>
+  Contact Us
+</Button>
               <Button size="lg" variant="outline" className="border-2 border-amber-600 text-amber-600 hover:bg-amber-50 px-8 py-6 rounded-full">
                 View Calendar
               </Button>

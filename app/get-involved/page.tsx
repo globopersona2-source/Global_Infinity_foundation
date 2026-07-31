@@ -299,100 +299,100 @@ export default function GetInvolvedPage() {
 
 
       {/* Ways to Get Involved - Creative Card Grid */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Ways to Get Involved</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Choose how you'd like to make a difference in our community
-            </p>
-          </motion.div>
+<section className="py-24">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeUp}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Ways to Get Involved</h2>
+      <p className="text-gray-600 max-w-2xl mx-auto">
+        Choose how you'd like to make a difference in our community
+      </p>
+    </motion.div>
 
-          {/* Alternating Layout Cards */}
-          <div className="space-y-16 max-w-5xl mx-auto">
-            {ways.map((way, idx) => (
+    {/* Alternating Layout Cards */}
+    <div className="space-y-16 max-w-5xl mx-auto">
+      {ways.map((way, idx) => (
+        <motion.div
+          key={idx}
+          initial="hidden"
+          whileInView="visible"
+          variants={idx % 2 === 0 ? slideInLeft : slideInRight}
+          viewport={{ once: true }}
+          transition={{ delay: idx * 0.1 }}
+          className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}
+        >
+          {/* Image Side */}
+          <div className="lg:w-1/2">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="relative h-80 rounded-3xl overflow-hidden shadow-2xl"
+            >
+              <Image
+                src={way.image}
+                alt={way.title}
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-110"
+              />
+              {/* Removed the gradient overlay div */}
+
+              {/* Floating Icon */}
               <motion.div
-                key={idx}
-                initial="hidden"
-                whileInView="visible"
-                variants={idx % 2 === 0 ? slideInLeft : slideInRight}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}
+                animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute bottom-6 right-6"
               >
-                {/* Image Side */}
-                <div className="lg:w-1/2">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="relative h-80 rounded-3xl overflow-hidden shadow-2xl"
-                  >
-                    <Image
-                      src={way.image}
-                      alt={way.title}
-                      fill
-                      className="object-cover transition-transform duration-700 hover:scale-110"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${way.color} opacity-60`}></div>
-                    
-                    {/* Floating Icon */}
-                    <motion.div
-                      animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
-                      transition={{ duration: 4, repeat: Infinity }}
-                      className="absolute bottom-6 right-6"
-                    >
-                      <div className={`w-16 h-16 bg-gradient-to-br ${way.color} rounded-2xl flex items-center justify-center shadow-xl`}>
-                        <way.icon className="w-8 h-8 text-white" />
-                      </div>
-                    </motion.div>
-
-                    {/* Stats Badge */}
-                    <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-gray-800 shadow-lg">
-                      {way.stats}
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Content Side */}
-                <div className="lg:w-1/2">
-                  <ParallaxCard>
-                    <div className={`${way.bgColor} p-8 rounded-3xl shadow-xl border border-${way.color.split('-')[1]}-200`}>
-                      <h3 className={`text-2xl font-bold text-gray-900 mb-3`}>{way.title}</h3>
-                      <p className="text-gray-600 mb-6 leading-relaxed">{way.description}</p>
-                      
-                      {/* Action Button */}
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        className="inline-flex items-center gap-2 cursor-pointer group"
-                      >
-                        <span className={`font-semibold text-${way.color.split('-')[1]}-600`}>
-                          Learn More
-                        </span>
-                        <ArrowRight className={`w-4 h-4 text-${way.color.split('-')[1]}-600 group-hover:translate-x-1 transition-transform`} />
-                      </motion.div>
-
-                      {/* Progress Indicator */}
-                      <div className="mt-6 h-1 bg-white rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${70 + idx * 5}%` }}
-                          transition={{ delay: idx * 0.2, duration: 1 }}
-                          className={`h-full bg-gradient-to-r ${way.color}`}
-                        />
-                      </div>
-                    </div>
-                  </ParallaxCard>
+                <div className={`w-16 h-16 bg-gradient-to-br ${way.color} rounded-2xl flex items-center justify-center shadow-xl`}>
+                  <way.icon className="w-8 h-8 text-white" />
                 </div>
               </motion.div>
-            ))}
+
+              {/* Stats Badge */}
+              <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-gray-800 shadow-lg">
+                {way.stats}
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+
+          {/* Content Side */}
+          <div className="lg:w-1/2">
+            <ParallaxCard>
+              <div className={`${way.bgColor} p-8 rounded-3xl shadow-xl border border-${way.color.split('-')[1]}-200`}>
+                <h3 className={`text-2xl font-bold text-gray-900 mb-3`}>{way.title}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">{way.description}</p>
+                
+                {/* Action Button */}
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  className="inline-flex items-center gap-2 cursor-pointer group"
+                >
+                  <span className={`font-semibold text-${way.color.split('-')[1]}-600`}>
+                    Learn More
+                  </span>
+                  <ArrowRight className={`w-4 h-4 text-${way.color.split('-')[1]}-600 group-hover:translate-x-1 transition-transform`} />
+                </motion.div>
+
+                {/* Progress Indicator */}
+                <div className="mt-6 h-1 bg-white rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${70 + idx * 5}%` }}
+                    transition={{ delay: idx * 0.2, duration: 1 }}
+                    className={`h-full bg-gradient-to-r ${way.color}`}
+                  />
+                </div>
+              </div>
+            </ParallaxCard>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
 
 

@@ -344,8 +344,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-amber-50 overflow-hidden">
 
       {/* Hero Section - Cinematic Experience */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Video/Gradient Effect */}
+<section className="relative min-h-[110vh] flex items-center overflow-hidden">        {/* Background Video/Gradient Effect */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-900/90 via-slate-900/95 to-slate-900"></div>
           <motion.div
@@ -452,8 +451,8 @@ export default function Home() {
                 className="flex gap-8 mt-12"
               >
                 {[
-                  { value: '500+', label: 'Students' },
-                  { value: '30+', label: 'Artisans' },
+                  { value: '100+', label: 'Students' },
+                  { value: '10+', label: 'Artisans' },
                   { value: '50+', label: 'Events' },
                 ].map((stat, idx) => (
                   <div key={idx} className="text-center">
@@ -593,107 +592,107 @@ export default function Home() {
       </section>
 
       {/* Focus Areas - Interactive Cards */}
-      <section className="py-32 bg-gradient-to-br from-slate-50 to-amber-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Our Focus Areas</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Discover how we're making a difference through music
-            </p>
-          </motion.div>
+ <section className="py-32 bg-gradient-to-br from-slate-50 to-amber-50">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeUp}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Our Focus Areas</h2>
+      <p className="text-slate-600 max-w-2xl mx-auto">
+        Discover how we're making a difference through music
+      </p>
+    </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: Music,
-                title: 'Music Education',
-                description: 'Providing accessible music learning opportunities, training programs, and workshops to nurture young talent and promote cultural heritage.',
-                image: '/assets/images/FocusAreas1.jpeg',
-                color: 'from-amber-500 to-yellow-500',
-                stats: '500+ Students'
-              },
-              {
-                icon: Guitar,
-                title: 'Instrument Production & Sales',
-                description: 'Supporting the production and distribution of quality musical instruments while promoting traditional craftsmanship and sustaining artisan communities.',
-                image: '/assets/images/FocusAreas2.jpeg',
-                color: 'from-amber-600 to-yellow-600',
-                stats: '30+ Artisans'
-              },
-              {
-                icon: CalendarHeart,
-                title: 'Events & Fundraising',
-                description: 'Organizing concerts, cultural festivals, and fundraising events that celebrate music while generating resources to support the foundation\'s initiatives.',
-                image: '/assets/images/FocusAreas3.jpeg',
-                color: 'from-amber-500 to-yellow-500',
-                stats: '50+ Events'
-              }
-            ].map((area, idx) => (
-              <motion.div
-                key={idx}
-                initial="hidden"
-                whileInView="visible"
-                variants={idx % 2 === 0 ? slideInLeft : slideInRight}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2 }}
-                whileHover={{ y: -10 }}
-              >
-                <TiltCard>
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 group">
-                    {/* Image Section */}
-                    <div className="relative h-64 overflow-hidden">
-                      <Image
-                        src={area.image}
-                        alt={area.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${area.color} opacity-70`}></div>
-                      
-                      {/* Icon Overlay */}
-                      <div className="absolute bottom-4 left-4">
-                        <div className={`w-14 h-14 bg-gradient-to-br ${area.color} rounded-xl flex items-center justify-center shadow-xl`}>
-                          <area.icon className="w-7 h-7 text-white" />
-                        </div>
-                      </div>
+    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {[
+        {
+          icon: Music,
+          title: 'Music Education',
+          description: 'Providing accessible music learning opportunities, training programs, and workshops to nurture young talent and promote cultural heritage.',
+          image: '/assets/images/FocusAreas1.jpeg',
+          color: 'from-amber-500 to-yellow-500',
+          stats: '100+ Students'
+        },
+        {
+          icon: Guitar,
+          title: 'Instrument Production & Sales',
+          description: 'Supporting the production and distribution of quality musical instruments while promoting traditional craftsmanship and sustaining artisan communities.',
+          image: '/assets/images/FocusAreas2.jpeg',
+          color: 'from-amber-600 to-yellow-600',
+          stats: '10+ Artisans'
+        },
+        {
+          icon: CalendarHeart,
+          title: 'Events & Fundraising',
+          description: 'Organizing concerts, cultural festivals, and fundraising events that celebrate music while generating resources to support the foundation\'s initiatives.',
+          image: '/assets/images/FocusAreas3.jpeg',
+          color: 'from-amber-500 to-yellow-500',
+          stats: '50+ Events'
+        }
+      ].map((area, idx) => (
+        <motion.div
+          key={idx}
+          initial="hidden"
+          whileInView="visible"
+          variants={idx % 2 === 0 ? slideInLeft : slideInRight}
+          viewport={{ once: true }}
+          transition={{ delay: idx * 0.2 }}
+          whileHover={{ y: -10 }}
+        >
+          <TiltCard>
+            <div className="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 group">
+              {/* Image Section */}
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src={area.image}
+                  alt={area.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* Removed the gradient overlay div */}
 
-                      {/* Stats Badge */}
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-amber-600 shadow-lg">
-                        {area.stats}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-8">
-                      <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-amber-600 transition-colors">
-                        {area.title}
-                      </h3>
-                      <p className="text-slate-600 leading-relaxed mb-6">
-                        {area.description}
-                      </p>
-                      
-                      {/* Learn More Link */}
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        className="inline-flex items-center gap-2 text-amber-600 font-medium cursor-pointer group"
-                      >
-                        <span>Learn More</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </motion.div>
-                    </div>
+                {/* Icon Overlay */}
+                <div className="absolute bottom-4 left-4">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${area.color} rounded-xl flex items-center justify-center shadow-xl`}>
+                    <area.icon className="w-7 h-7 text-white" />
                   </div>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                </div>
+
+                {/* Stats Badge */}
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-amber-600 shadow-lg">
+                  {area.stats}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-amber-600 transition-colors">
+                  {area.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  {area.description}
+                </p>
+
+                {/* Learn More Link */}
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  className="inline-flex items-center gap-2 text-amber-600 font-medium cursor-pointer group"
+                >
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.div>
+              </div>
+            </div>
+          </TiltCard>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Vision & Mission - Split Screen */}
       <section className="py-32 bg-white">
@@ -763,10 +762,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              { icon: Users, value: '500+', label: 'Students' },
-              { icon: Award, value: '30+', label: 'Artisans' },
+              { icon: Users, value: '100+', label: 'Students' },
+              { icon: Award, value: '10+', label: 'Artisans' },
               { icon: CalendarHeart, value: '50+', label: 'Events' },
-              { icon: Heart, value: '1000+', label: 'Lives Impacted' },
+              { icon: Heart, value: '150+', label: 'Lives Impacted' },
             ].map((stat, idx) => (
               <motion.div
                 key={idx}

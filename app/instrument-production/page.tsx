@@ -160,7 +160,7 @@ export default function InstrumentProductionPage() {
               >
                 <span className="bg-white/10 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-bold tracking-wider border border-white/20 flex items-center gap-2">
                   <Sparkles className="w-4 h-4" />
-                  CRAFTSMANSHIP SINCE 2010
+                  CRAFTSMANSHIP SINCE 2020
                 </span>
               </motion.div>
 
@@ -186,8 +186,8 @@ export default function InstrumentProductionPage() {
                 className="flex flex-wrap gap-6"
               >
                 {[
-                  { value: '50+', label: 'Master Artisans' },
-                  { value: '1000+', label: 'Instruments' },
+                  { value: '10+', label: 'Master Artisans' },
+                  { value: '500+', label: 'Instruments' },
                   { value: '30+', label: 'Years Heritage' },
                 ].map((stat, idx) => (
                   <div key={idx} className="flex items-center gap-3">

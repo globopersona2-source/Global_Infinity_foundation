@@ -4,7 +4,7 @@ import React from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, Phone, MapPin, Send, Sparkles, ArrowRight, Clock, Github, Twitter, Linkedin, Instagram, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Sparkles, ArrowRight, Clock, Youtube, Twitter, Linkedin, Facebook, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -335,7 +335,9 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Phone</h3>
                     <p className="text-gray-500 mb-4 text-sm">Call us during business hours</p>
                     <p className="text-lg font-semibold text-purple-600">
-                      +91 12345 67890
+                      
+                      
+                      +91 9448663668
                     </p>
 
                     <motion.div 
@@ -370,7 +372,7 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Location</h3>
                     <p className="text-gray-500 mb-4 text-sm">Visit our headquarters</p>
                     <p className="text-lg font-semibold text-rose-600">
-                      India
+                     Bangalore, India
                     </p>
 
                     <motion.div 
@@ -509,27 +511,49 @@ export default function ContactPage() {
               </div>
 
               {/* Social Links */}
-              <div className="bg-white rounded-3xl p-6 shadow-xl border border-amber-200">
-                <h4 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h4>
-                <div className="flex gap-4">
-                  {[
-                    { icon: Twitter, color: 'bg-blue-500', hover: 'bg-blue-600' },
-                    { icon: Linkedin, color: 'bg-blue-700', hover: 'bg-blue-800' },
-                    { icon: Instagram, color: 'bg-pink-500', hover: 'bg-pink-600' },
-                    { icon: Github, color: 'bg-gray-800', hover: 'bg-gray-900' },
-                  ].map((social, idx) => (
-                    <motion.a
-                      key={idx}
-                      href="#"
-                      whileHover={{ scale: 1.1, y: -3 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`w-12 h-12 ${social.color} rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all`}
-                    >
-                      <social.icon className="w-5 h-5 text-white" />
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
+<div className="bg-white rounded-3xl p-6 shadow-xl border border-amber-200">
+  <h4 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h4>
+  <div className="flex gap-4">
+    {[
+      { 
+        icon: Facebook, 
+        color: 'bg-blue-600', 
+        hover: 'bg-blue-700',
+        url: 'https://www.facebook.com/globalinfinityfoundation' 
+      },
+      { 
+        icon: Twitter, 
+        color: 'bg-blue-500', 
+        hover: 'bg-blue-600',
+        url: 'https://twitter.com/globalinfinity' 
+      },
+      { 
+        icon: Linkedin, 
+        color: 'bg-blue-700', 
+        hover: 'bg-blue-800',
+        url: 'https://www.linkedin.com/in/global-infinity-foundation-1a3a39426/' 
+      },
+      { 
+        icon: Youtube, 
+        color: 'bg-red-600', 
+        hover: 'bg-red-700',
+        url: 'https://www.youtube.com/@globalinfinityfoundation' 
+      },
+    ].map((social, idx) => (
+      <motion.a
+        key={idx}
+        href={social.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.1, y: -3 }}
+        whileTap={{ scale: 0.95 }}
+        className={`w-12 h-12 ${social.color} rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all`}
+      >
+        <social.icon className="w-5 h-5 text-white" />
+      </motion.a>
+    ))}
+  </div>
+</div>
             </motion.div>
           </div>
         </div>

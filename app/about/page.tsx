@@ -98,10 +98,10 @@ export default function AboutPage() {
                 className="grid grid-cols-2 gap-4 mt-8"
               >
                 {[
-                  { icon: Users, value: '500+', label: 'Students', color: 'from-amber-500 to-yellow-500' },
-                  { icon: Heart, value: '30+', label: 'Artisans', color: 'from-amber-600 to-yellow-600' },
+                  { icon: Users, value: '100+', label: 'Students', color: 'from-amber-500 to-yellow-500' },
+                  { icon: Heart, value: '10+', label: 'Artisans', color: 'from-amber-600 to-yellow-600' },
                   { icon: Globe, value: '50+', label: 'Events', color: 'from-amber-500 to-yellow-500' },
-                  { icon: Award, value: '15+', label: 'Years', color: 'from-amber-600 to-yellow-600' },
+                  { icon: Award, value: '150+', label: 'Years', color: 'from-amber-600 to-yellow-600' },
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
