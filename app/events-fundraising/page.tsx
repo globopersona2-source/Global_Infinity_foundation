@@ -525,7 +525,7 @@ export default function EventsFundraisingPage() {
             </div>
 
             <div className="flex justify-between text-sm">
-              <span>$75,000 raised</span>
+              <span>$10000 raised</span>
               <span>$100,000 goal</span>
             </div>
 

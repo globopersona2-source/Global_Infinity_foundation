@@ -4,7 +4,7 @@ import React from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, Phone, MapPin, Send, Sparkles, ArrowRight, Clock, Youtube, Twitter, Linkedin, Facebook, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Sparkles, ArrowRight, Clock, Youtube,  X, Linkedin, Facebook, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -516,27 +516,19 @@ export default function ContactPage() {
   <div className="flex gap-4">
     {[
       { 
-        icon: Facebook, 
-        color: 'bg-blue-600', 
-        hover: 'bg-blue-700',
+        icon: 'facebook-logo.png', 
         url: 'https://www.facebook.com/globalinfinityfoundation' 
       },
       { 
-        icon: Twitter, 
-        color: 'bg-blue-500', 
-        hover: 'bg-blue-600',
-        url: 'https://twitter.com/globalinfinity' 
+        icon: 'x-logo.jpg', 
+        url: 'https://x.com/GlobalInfify' 
       },
       { 
-        icon: Linkedin, 
-        color: 'bg-blue-700', 
-        hover: 'bg-blue-800',
+        icon: 'Linkedin-logo.png', 
         url: 'https://www.linkedin.com/in/global-infinity-foundation-1a3a39426/' 
       },
       { 
-        icon: Youtube, 
-        color: 'bg-red-600', 
-        hover: 'bg-red-700',
+        icon: 'YouTube_logo.webp', 
         url: 'https://www.youtube.com/@globalinfinityfoundation' 
       },
     ].map((social, idx) => (
@@ -547,9 +539,13 @@ export default function ContactPage() {
         rel="noopener noreferrer"
         whileHover={{ scale: 1.1, y: -3 }}
         whileTap={{ scale: 0.95 }}
-        className={`w-12 h-12 ${social.color} rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all`}
+        className="w-12 h-12 rounded-xl flex items-center justify-center hover:shadow-lg transition-all"
       >
-        <social.icon className="w-5 h-5 text-white" />
+        <img 
+          src={`/${social.icon}`} 
+          alt={`${social.icon.split('-')[0]} logo`}
+          className="w-10 h-10 object-contain"
+        />
       </motion.a>
     ))}
   </div>

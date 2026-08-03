@@ -72,7 +72,7 @@ export default function AboutPage() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full blur opacity-30"></div>
                 <span className="relative bg-white px-6 py-3 rounded-full text-sm font-bold text-amber-600 shadow-lg flex items-center gap-2">
                   <Sparkles className="w-4 h-4" />
-                  EST. 2010
+                  EST. 2020
                 </span>
               </motion.div>
 
