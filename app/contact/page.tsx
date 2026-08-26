@@ -261,7 +261,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <div className="text-xs text-gray-500">Email us at</div>
-                        <div className="text-sm font-semibold text-gray-900">info@globalinfinity.org</div>
+                        <div className="text-sm font-semibold text-gray-900">info@globalinfinityfoundation.com</div>
                       </div>
                     </div>
                   </div>
@@ -299,7 +299,7 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Email</h3>
                     <p className="text-gray-500 mb-4 text-sm">Send us an email anytime</p>
                     <p className="text-lg font-semibold text-amber-600 break-all">
-                      info@globalinfinityfoundation.org
+                      info@globalinfinityfoundation.com
                     </p>
 
                     {/* Hover Indicator */}
