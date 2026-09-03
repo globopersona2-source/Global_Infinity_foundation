@@ -534,7 +534,7 @@ export default function ContactPage() {
                     // Added Instagram logo
                     { 
                       icon: 'instagram-logo.avif', 
-                      url: 'https://www.instagram.com/globalinfinityfoundation'   // Replace with your actual Instagram URL
+                      url: 'https://www.instagram.com/globalinfinityf/'   // Replace with your actual Instagram URL
                     },
                   ].map((social, idx) => (
                     <motion.a
