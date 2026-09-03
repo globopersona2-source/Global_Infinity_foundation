@@ -261,7 +261,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <div className="text-xs text-gray-500">Email us at</div>
-                        <div className="text-sm font-semibold text-gray-900">info@globalinfinityfoundation.com</div>
+                        <div className="text-sm font-semibold text-gray-900">globalinfinityf@gmail.com </div>
                       </div>
                     </div>
                   </div>
@@ -299,7 +299,7 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Email</h3>
                     <p className="text-gray-500 mb-4 text-sm">Send us an email anytime</p>
                     <p className="text-lg font-semibold text-amber-600 break-all">
-                      info@globalinfinityfoundation.com
+                      globalinfinityf@gmail.com 
                     </p>
 
                     {/* Hover Indicator */}
@@ -511,45 +511,50 @@ export default function ContactPage() {
               </div>
 
               {/* Social Links */}
-<div className="bg-white rounded-3xl p-6 shadow-xl border border-amber-200">
-  <h4 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h4>
-  <div className="flex gap-4">
-    {[
-      { 
-        icon: 'facebook-logo.png', 
-        url: 'https://www.facebook.com/globalinfinityfoundation' 
-      },
-      { 
-        icon: 'x-logo.jpg', 
-        url: 'https://x.com/GlobalInfify' 
-      },
-      { 
-        icon: 'Linkedin-logo.png', 
-        url: 'https://www.linkedin.com/in/global-infinity-foundation-1a3a39426/' 
-      },
-      { 
-        icon: 'YouTube_logo.webp', 
-        url: 'https://www.youtube.com/@globalinfinityfoundation' 
-      },
-    ].map((social, idx) => (
-      <motion.a
-        key={idx}
-        href={social.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.1, y: -3 }}
-        whileTap={{ scale: 0.95 }}
-        className="w-12 h-12 rounded-xl flex items-center justify-center hover:shadow-lg transition-all"
-      >
-        <img 
-          src={`/${social.icon}`} 
-          alt={`${social.icon.split('-')[0]} logo`}
-          className="w-10 h-10 object-contain"
-        />
-      </motion.a>
-    ))}
-  </div>
-</div>
+              <div className="bg-white rounded-3xl p-6 shadow-xl border border-amber-200">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h4>
+                <div className="flex gap-4">
+                  {[
+                    { 
+                      icon: 'facebook-logo.png', 
+                      url: 'https://www.facebook.com/globalinfinityfoundation' 
+                    },
+                    { 
+                      icon: 'x-logo.jpg', 
+                      url: 'https://x.com/GlobalInfify' 
+                    },
+                    { 
+                      icon: 'Linkedin-logo.png', 
+                      url: 'https://www.linkedin.com/in/global-infinity-foundation-1a3a39426/' 
+                    },
+                    { 
+                      icon: 'YouTube_logo.webp', 
+                      url: 'https://www.youtube.com/@globalinfinityfoundation' 
+                    },
+                    // Added Instagram logo
+                    { 
+                      icon: 'instagram-logo.avif', 
+                      url: 'https://www.instagram.com/globalinfinityfoundation'   // Replace with your actual Instagram URL
+                    },
+                  ].map((social, idx) => (
+                    <motion.a
+                      key={idx}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-12 h-12 rounded-xl flex items-center justify-center hover:shadow-lg transition-all"
+                    >
+                      <img 
+                        src={`/${social.icon}`} 
+                        alt={`${social.icon.split('-')[0]} logo`}
+                        className="w-10 h-10 object-contain"
+                      />
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>

@@ -19,7 +19,7 @@ const footerLinks = {
     { href: '/get-involved', label: 'Partner' },
   ],
   contact: [
-    { icon: Mail, text: 'info@globalinfinityfoundation.com' },
+    { icon: Mail, text: 'globalinfinityf@gmail.com ' },
     { icon: Phone, text: '+91 9448663668' },
     { icon: MapPin, text: 'Bangalore , India' },
   ]
