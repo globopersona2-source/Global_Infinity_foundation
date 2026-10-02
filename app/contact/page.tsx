@@ -123,8 +123,6 @@ export default function ContactPage() {
     message: ''
   })
   
-  // New states for form submission
-  const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -136,29 +134,23 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
-
+    
+    // Show success instantly for better UX
+    setSubmitStatus('success')
+    
+    // Save the data and clear the form
+    const submittedData = { ...formData }
+    setFormData({ name: '', email: '', message: '' })
+    
+    // Send in the background
     try {
-      const response = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(submittedData),
       })
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({ name: '', email: '', message: '' }) // Clear form on success
-      } else {
-        setSubmitStatus('error')
-      }
     } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
+      console.error('Background email failed:', error)
     }
   }
 
@@ -471,24 +463,10 @@ export default function ContactPage() {
                     >
                       <Button 
                         type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                        className="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
                       >
-                        {isSubmitting ? (
-                          <span className="flex items-center gap-2">
-                            <motion.div 
-                              animate={{ rotate: 360 }} 
-                              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                              className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                            />
-                            Sending...
-                          </span>
-                        ) : (
-                          <>
-                            <Send className="w-4 h-4" />
-                            Send Message
-                          </>
-                        )}
+                        <Send className="w-4 h-4" />
+                        Send Message
                       </Button>
                     </motion.div>
 
