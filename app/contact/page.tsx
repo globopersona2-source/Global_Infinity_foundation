@@ -4,9 +4,8 @@ import React from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, Phone, MapPin, Send, Sparkles, ArrowRight, Clock, Youtube,  X, Linkedin, Facebook, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Sparkles, ArrowRight, Clock, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -56,7 +55,8 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode, cla
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7.5deg', '7.5deg'])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = ref.current!.getBoundingClientRect()
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect()
     const width = rect.width
     const height = rect.height
     const mouseX = e.clientX - rect.left
@@ -122,6 +122,10 @@ export default function ContactPage() {
     email: '',
     message: ''
   })
+  
+  // New states for form submission
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -130,10 +134,32 @@ export default function ContactPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', message: '' }) // Clear form on success
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -287,22 +313,18 @@ export default function ContactPage() {
               <TiltCard>
                 <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border border-amber-100 group h-full">
                   <div className="relative">
-                    {/* Background Icon */}
                     <Mail className="absolute -right-4 -top-4 w-24 h-24 text-amber-100 group-hover:text-amber-200 transition-colors" />
                     
-                    {/* Icon */}
                     <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
                       <Mail className="w-8 h-8 text-white" />
                     </div>
 
-                    {/* Content */}
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Email</h3>
                     <p className="text-gray-500 mb-4 text-sm">Send us an email anytime</p>
                     <p className="text-lg font-semibold text-amber-600 break-all">
                       globalinfinityf@gmail.com 
                     </p>
 
-                    {/* Hover Indicator */}
                     <motion.div 
                       className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-amber-500 to-rose-500"
                       initial={{ width: 0 }}
@@ -335,8 +357,6 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Phone</h3>
                     <p className="text-gray-500 mb-4 text-sm">Call us during business hours</p>
                     <p className="text-lg font-semibold text-purple-600">
-                      
-                      
                       +91 9448663668
                     </p>
 
@@ -444,18 +464,60 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button 
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
+                  <div className="space-y-4 pt-2">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </Button>
-                  </motion.div>
+                      <Button 
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                      >
+                        {isSubmitting ? (
+                          <span className="flex items-center gap-2">
+                            <motion.div 
+                              animate={{ rotate: 360 }} 
+                              transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                              className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                            />
+                            Sending...
+                          </span>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4" />
+                            Send Message
+                          </>
+                        )}
+                      </Button>
+                    </motion.div>
+
+                    {/* Success Message */}
+                    {submitStatus === 'success' && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        className="p-3 bg-green-50 border border-green-200 rounded-xl text-center"
+                      >
+                        <p className="text-green-700 text-sm font-medium">
+                          Message sent successfully! We'll get back to you soon.
+                        </p>
+                      </motion.div>
+                    )}
+
+                    {/* Error Message */}
+                    {submitStatus === 'error' && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        className="p-3 bg-red-50 border border-red-200 rounded-xl text-center"
+                      >
+                        <p className="text-red-700 text-sm font-medium">
+                          Something went wrong. Please try again later or email us directly.
+                        </p>
+                      </motion.div>
+                    )}
+                  </div>
                 </form>
               </div>
             </motion.div>
@@ -515,27 +577,11 @@ export default function ContactPage() {
                 <h4 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h4>
                 <div className="flex gap-4">
                   {[
-                    { 
-                      icon: 'facebook-logo.png', 
-                      url: 'https://www.facebook.com/globalinfinityfoundation' 
-                    },
-                    { 
-                      icon: 'x-logo.jpg', 
-                      url: 'https://x.com/GlobalInfify' 
-                    },
-                    { 
-                      icon: 'Linkedin-logo.png', 
-                      url: 'https://www.linkedin.com/in/global-infinity-foundation-1a3a39426/' 
-                    },
-                    { 
-                      icon: 'YouTube_logo.webp', 
-                      url: 'https://www.youtube.com/@globalinfinityfoundation' 
-                    },
-                    // Added Instagram logo
-                    { 
-                      icon: 'instagram-logo.avif', 
-                      url: 'https://www.instagram.com/globalinfinityf/'   // Replace with your actual Instagram URL
-                    },
+                    { icon: 'facebook-logo.png', url: 'https://www.facebook.com/globalinfinityfoundation' },
+                    { icon: 'x-logo.jpg', url: 'https://x.com/GlobalInfify' },
+                    { icon: 'Linkedin-logo.png', url: 'https://www.linkedin.com/in/global-infinity-foundation-1a3a39426/' },
+                    { icon: 'YouTube_logo.webp', url: 'https://www.youtube.com/@globalinfinityfoundation' },
+                    { icon: 'instagram-logo.avif', url: 'https://www.instagram.com/globalinfinityf/' },
                   ].map((social, idx) => (
                     <motion.a
                       key={idx}
@@ -578,22 +624,10 @@ export default function ContactPage() {
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
-              {
-                q: 'How quickly do you respond?',
-                a: 'We typically respond within 24 hours during business days.'
-              },
-              {
-                q: 'Do you have a physical office?',
-                a: 'Yes, our headquarters is located in India. Visit us during office hours.'
-              },
-              {
-                q: 'Can I schedule a meeting?',
-                a: 'Absolutely! Send us an email and we\'ll arrange a convenient time.'
-              },
-              {
-                q: 'Do you accept collaborations?',
-                a: 'We love collaborations! Reach out to discuss partnership opportunities.'
-              }
+              { q: 'How quickly do you respond?', a: 'We typically respond within 24 hours during business days.' },
+              { q: 'Do you have a physical office?', a: 'Yes, our headquarters is located in India. Visit us during office hours.' },
+              { q: 'Can I schedule a meeting?', a: 'Absolutely! Send us an email and we\'ll arrange a convenient time.' },
+              { q: 'Do you accept collaborations?', a: 'We love collaborations! Reach out to discuss partnership opportunities.' }
             ].map((faq, idx) => (
               <motion.div
                 key={idx}
@@ -622,7 +656,6 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto bg-gradient-to-br from-amber-600 via-rose-600 to-purple-600 rounded-3xl p-12 shadow-2xl relative overflow-hidden"
           >
-            {/* Animated Background */}
             <motion.div
               animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
               transition={{ duration: 10, repeat: Infinity }}
